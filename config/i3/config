@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Mod4
 
 # Background
 exec_always --no-startup-id feh --bg-scale ~/Pictures/background.jpg
@@ -206,17 +206,26 @@ client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 client.background       #F8F8F2
 
 # dmenu
-bindsym Control+space exec --no-startup-id j4-dmenu-desktop --dmenu "dmenu -i -nf '#F8F8F2' -nb '#282A36' -sb '#FFAA01' -sf '#F8F8F2' -fn 'monospace-10' -p '  '"
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu "dmenu -i -nf '#F8F8F2' -nb '#282A36' -sb '#FFAA01' -sf '#F8F8F2' -fn 'monospace-10' -p '  '"
 
 # Remove border and title
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 2 
 
 # Gaps
-gaps inner 6
-gaps outer 0
+gaps inner 10
+gaps outer 1
+
+
+# round corners
+smart_borders on
+smart_borders no_gaps
+
 
 # Flameshot
 bindsym $mod+p exec flameshot gui
 
 # i3lock
-bindsym Mod4+l exec --no-startup-id betterlockscreen --lock
+bindsym $mod+Mod1+l exec --no-startup-id betterlockscreen --lock
+
+
+exec --no-startup-id setxkbmap -layout 'us,ru' -variant qwerty -option 'grp:alt_shift_toggle'
